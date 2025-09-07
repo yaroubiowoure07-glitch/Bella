@@ -188,11 +188,11 @@
     <p>
       Bella… La première fois que nos regards se sont croisés, j’ai senti le monde ralentir, comme si tout autour de nous disparaissait.  
       J’ai longtemps hésité à te parler, par peur que mes mots ne soient pas assez grands pour contenir ce que je ressentais.  
-      Mais aujourd’hui, je n’ai plus peur : je t’aime Bella, je t’aime Bella, je t’aime Bella… et je t’aimerai encore demain, et tous les jours qui suivront. ❤️
+      Mais aujourd’hui, je n’ai plus peur : je t’aime Bella, je t’aime Bella, je t’aime Bella… et je t’aimerai encore demain, et tous les jours qui suivront. ❤️
     </p>
     <p>
       Et même si je ne te l’ai pas dit l’autre soir dans les escaliers… je t’aime, Bella.  
-      Alors je te le demande aujourd’hui, simplement, sincèrement : veux-tu être ma petite amie ? 💖
+      Alors je te le demande aujourd’hui, simplement, sincèrement : veux-tu être ma petite amie ? 💖
     </p>
     <div class="boutons">
       <button onclick="reponseOui()">Oui 💖</button>
@@ -219,8 +219,51 @@
       document.body.classList.remove("non");
       document.body.classList.add("oui");
 
-      for (let i = 0; i < 100; i++) {
+      // Explosion de coeurs
+      for (let i = 0; i < 50; i++) {
         const coeur = document.createElement("div");
         coeur.className = "coeur-explosion";
         coeur.innerText = "💖";
-        coeur.style.left = Math.random() * window.innerWidth
+        coeur.style.left = Math.random() * window.innerWidth + "px";
+        coeur.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(coeur);
+
+        setTimeout(() => coeur.remove(), 2000);
+      }
+
+      // Message central
+      const msg = document.createElement("div");
+      msg.className = "message-oui";
+      msg.innerText = "💖 Ouiii ! Je t’aime Bella 💖";
+      document.body.appendChild(msg);
+
+      setTimeout(() => msg.remove(), 4000);
+    }
+
+    // Réponse Non
+    function reponseNon() {
+      document.body.classList.remove("oui");
+      document.body.classList.add("non");
+
+      // Coeurs brisés qui tombent
+      for (let i = 0; i < 30; i++) {
+        const coeur = document.createElement("div");
+        coeur.className = "coeur-brise";
+        coeur.innerText = "💔";
+        coeur.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(coeur);
+
+        setTimeout(() => coeur.remove(), 4000);
+      }
+
+      // Message central
+      const msg = document.createElement("div");
+      msg.className = "message-non";
+      msg.innerText = "💔 Oh non… tu m’as brisé le cœur 💔";
+      document.body.appendChild(msg);
+
+      setTimeout(() => msg.remove(), 4000);
+    }
+  </script>
+</body>
+</html>
