@@ -12,14 +12,14 @@
       font-family: 'Georgia', serif;
       color: #fff;
       text-align: center;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
     }
 
-    div {
+    .contenu {
       max-width: 700px;
       padding: 20px;
       animation: apparitionLumineuse 3s ease-in-out forwards;
@@ -71,7 +71,6 @@
       transform: scale(1.1);
     }
 
-    /* Explosion de cœurs */
     .coeur-explosion {
       position: absolute;
       font-size: 20px;
@@ -85,7 +84,6 @@
       100% { transform: scale(2); opacity: 0; }
     }
 
-    /* Cœurs brisés */
     .coeur-brise {
       position: absolute;
       font-size: 24px;
@@ -100,7 +98,6 @@
       100% { transform: translateY(90vh) scale(0.5) rotate(45deg); opacity: 0.2; }
     }
 
-    /* Vagues de Fawaz */
     .vague-container {
       position: fixed;
       top: 0;
@@ -129,7 +126,7 @@
   </style>
 </head>
 <body>
-  <div>
+  <div class="contenu">
     <h1>Pour Bella ❤️</h1>
     <p>
       Bella… La première fois que nos regards se sont croisés, j’ai senti le monde ralentir, comme si tout autour de nous disparaissait.  
