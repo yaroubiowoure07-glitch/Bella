@@ -138,16 +138,17 @@
       text-align: center;
     }
 
+    /* Messages en noir pour se différencier */
     .message-oui {
       background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      text-shadow: 0 0 20px #fff;
+      color: #000;
+      text-shadow: 0 0 5px #000;
     }
 
     .message-non {
       background: rgba(0, 0, 0, 0.3);
-      color: #fff;
-      text-shadow: 0 0 10px #000;
+      color: #000;
+      text-shadow: 0 0 5px #000;
       font-size: 1.8em;
     }
 
@@ -229,7 +230,7 @@
         coeur.innerText = "💖";
         coeur.style.left = Math.random() * window.innerWidth + "px";
         coeur.style.top = Math.random() * window.innerHeight + "px";
-        coeur.style.animationDuration = "120s"; // animation 2 minutes
+        coeur.style.animationDuration = "120s"; // 2 minutes
         document.body.appendChild(coeur);
 
         setTimeout(() => coeur.remove(), 120000);
@@ -253,7 +254,7 @@
         coeur.className = "coeur-brise";
         coeur.innerText = "💔";
         coeur.style.left = Math.random() * window.innerWidth + "px";
-        coeur.style.animationDuration = "120s"; // animation 2 minutes
+        coeur.style.animationDuration = "120s"; // 2 minutes
         document.body.appendChild(coeur);
 
         setTimeout(() => coeur.remove(), 120000);
