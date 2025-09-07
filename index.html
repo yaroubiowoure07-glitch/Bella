@@ -1,35 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <title>Pour Bella ❤️</title>
   <style>
     body {
       background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
       font-family: 'Georgia', serif;
       color: #fff;
       text-align: center;
-      padding: 20px;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
     div {
       max-width: 700px;
-      animation: fadeIn 3s ease-in-out;
+      padding: 20px;
+      animation: apparitionLumineuse 3s ease-in-out forwards;
+      z-index: 1;
     }
+
     h1 {
       font-size: 2.5em;
       margin-bottom: 0.5em;
+      animation: battement 1.5s infinite;
     }
+
     p {
       font-size: 1.3em;
       line-height: 1.6em;
+      opacity: 0;
+      animation: apparitionLumineuse 3s ease-in-out forwards;
+      animation-delay: 1s;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+
+    @keyframes battement {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes apparitionLumineuse {
+      0% { opacity: 0; text-shadow: none; }
+      100% { opacity: 1; text-shadow: 0 0 20px #fff; }
+    }
+
+    .coeur {
+      position: absolute;
+      top: -50px;
+      font-size: 24px;
+      animation: chute 6s linear infinite;
+      color: #fff;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes chute {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .vague-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .vague {
+      position: absolute;
+      font-size: 2em;
+      color: rgba(255, 255, 255, 0.3);
+      animation: flotter 10s infinite ease-in-out;
+    }
+
+    @keyframes flotter {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(50vw, 20vh) rotate(45deg);
+      }
+      50% {
+        transform: translate(20vw, 80vh) rotate(90deg);
+      }
+      75% {
+        transform: translate(80vw, 50vh) rotate(135deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(180deg);
+      }
     }
   </style>
 </head>
@@ -37,14 +105,40 @@
   <div>
     <h1>Pour Bella ❤️</h1>
     <p>
-      Bella… La première fois que nos regards se sont croisés, j’ai senti le monde ralentir, comme si tout autour de nous disparaissait. 
-      J’ai longtemps hésité à te parler, par peur que mes mots ne soient pas assez grands pour contenir ce que je ressentais. 
+      Bella… La première fois que nos regards se sont croisés, j’ai senti le monde ralentir, comme si tout autour de nous disparaissait.  
+      J’ai longtemps hésité à te parler, par peur que mes mots ne soient pas assez grands pour contenir ce que je ressentais.  
       Mais aujourd’hui, je n’ai plus peur : je t’aime Bella, je t’aime Bella, je t’aime Bella… et je t’aimerai encore demain, et tous les jours qui suivront. ❤️
     </p>
     <p>
-      Et même si je ne te l’ai pas dit l’autre soir dans les escaliers… je t’aime, Bella. 
+      Et même si je ne te l’ai pas dit l’autre soir dans les escaliers… je t’aime, Bella.  
       Alors je te le demande aujourd’hui, simplement, sincèrement : veux-tu être ma petite amie ? 💖
     </p>
   </div>
+
+  <div class="vague-container"></div>
+
+  <script>
+    // Pluie de cœurs
+    function creerCoeur() {
+      const coeur = document.createElement("div");
+      coeur.classList.add("coeur");
+      coeur.style.left = Math.random() * window.innerWidth + "px";
+      coeur.innerText = "❤️";
+      document.body.appendChild(coeur);
+      setTimeout(() => coeur.remove(), 6000);
+    }
+    setInterval(creerCoeur, 300);
+
+    // Vagues de "Fawaz"
+    for (let i = 0; i < 10; i++) {
+      const span = document.createElement("span");
+      span.className = "vague";
+      span.textContent = "Fawaz";
+      span.style.top = Math.random() * window.innerHeight + "px";
+      span.style.left = Math.random() * window.innerWidth + "px";
+      span.style.animationDelay = Math.random() * 10 + "s";
+      document.querySelector(".vague-container").appendChild(span);
+    }
+  </script>
 </body>
 </html>
