@@ -17,6 +17,15 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      transition: background 2s ease-in-out;
+    }
+
+    body.oui {
+      background: radial-gradient(circle, #ffe6f0, #000022);
+    }
+
+    body.non {
+      background: linear-gradient(135deg, #444, #222);
     }
 
     .contenu {
@@ -32,6 +41,14 @@
       animation: battement 1.5s infinite;
     }
 
+    .coeur-battant {
+      font-size: 1.8em;
+      margin: 10px 0;
+      animation: battementCoeur 1.5s infinite;
+      color: #fff;
+      text-shadow: 0 0 10px #fff;
+    }
+
     p {
       font-size: 1.3em;
       line-height: 1.6em;
@@ -43,6 +60,13 @@
     @keyframes battement {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.2); }
+    }
+
+    @keyframes battementCoeur {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      25% { transform: scale(1.2); opacity: 0.9; }
+      50% { transform: scale(1); opacity: 1; }
+      75% { transform: scale(1.2); opacity: 0.9; }
     }
 
     @keyframes apparitionLumineuse {
@@ -98,6 +122,36 @@
       100% { transform: translateY(90vh) scale(0.5) rotate(45deg); opacity: 0.2; }
     }
 
+    .message-oui, .message-non {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2em;
+      padding: 20px 40px;
+      border-radius: 20px;
+      z-index: 10;
+      animation: apparitionMessage 2s ease-out forwards;
+    }
+
+    .message-oui {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-shadow: 0 0 20px #fff;
+    }
+
+    .message-non {
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      text-shadow: 0 0 10px #000;
+      font-size: 1.8em;
+    }
+
+    @keyframes apparitionMessage {
+      0% { opacity: 0; transform: scale(0.5) translate(-50%, -50%); }
+      100% { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+    }
+
     .vague-container {
       position: fixed;
       top: 0;
@@ -128,6 +182,9 @@
 <body>
   <div class="contenu">
     <h1>Pour Bella ❤️</h1>
+    <div class="coeur-battant">Je t’aime Bella 💗</div>
+    <div class="coeur-battant">Je t’aime Bella 💗</div>
+    <div class="coeur-battant">Je t’aime Bella 💗</div>
     <p>
       Bella… La première fois que nos regards se sont croisés, j’ai senti le monde ralentir, comme si tout autour de nous disparaissait.  
       J’ai longtemps hésité à te parler, par peur que mes mots ne soient pas assez grands pour contenir ce que je ressentais.  
@@ -157,31 +214,13 @@
       document.querySelector(".vague-container").appendChild(span);
     }
 
-    // Réponse Oui : explosion de cœurs
+    // Réponse Oui
     function reponseOui() {
+      document.body.classList.remove("non");
+      document.body.classList.add("oui");
+
       for (let i = 0; i < 100; i++) {
         const coeur = document.createElement("div");
         coeur.className = "coeur-explosion";
         coeur.innerText = "💖";
-        coeur.style.left = Math.random() * window.innerWidth + "px";
-        coeur.style.top = Math.random() * window.innerHeight + "px";
-        document.body.appendChild(coeur);
-        setTimeout(() => coeur.remove(), 2000);
-      }
-    }
-
-    // Réponse Non : pluie de cœurs brisés
-    function reponseNon() {
-      for (let i = 0; i < 50; i++) {
-        const coeur = document.createElement("div");
-        coeur.className = "coeur-brise";
-        coeur.innerText = "💔";
-        coeur.style.left = Math.random() * window.innerWidth + "px";
-        coeur.style.top = "-50px";
-        document.body.appendChild(coeur);
-        setTimeout(() => coeur.remove(), 4000);
-      }
-    }
-  </script>
-</body>
-</html>
+        coeur.style.left = Math.random() * window.innerWidth
