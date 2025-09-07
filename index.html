@@ -18,6 +18,7 @@
       justify-content: center;
       align-items: center;
       transition: background 2s ease-in-out;
+      position: relative;
     }
 
     body.oui {
@@ -77,6 +78,7 @@
     .boutons {
       margin-top: 30px;
       z-index: 2;
+      position: relative;
     }
 
     button {
@@ -89,6 +91,7 @@
       color: #ee9ca7;
       cursor: pointer;
       transition: transform 0.3s;
+      position: relative;
     }
 
     button:hover {
@@ -132,6 +135,7 @@
       border-radius: 20px;
       z-index: 10;
       animation: apparitionMessage 2s ease-out forwards;
+      text-align: center;
     }
 
     .message-oui {
@@ -219,25 +223,24 @@
       document.body.classList.remove("non");
       document.body.classList.add("oui");
 
-      // Explosion de coeurs
       for (let i = 0; i < 50; i++) {
         const coeur = document.createElement("div");
         coeur.className = "coeur-explosion";
         coeur.innerText = "💖";
         coeur.style.left = Math.random() * window.innerWidth + "px";
         coeur.style.top = Math.random() * window.innerHeight + "px";
+        coeur.style.animationDuration = "120s"; // animation 2 minutes
         document.body.appendChild(coeur);
 
-        setTimeout(() => coeur.remove(), 2000);
+        setTimeout(() => coeur.remove(), 120000);
       }
 
-      // Message central
       const msg = document.createElement("div");
       msg.className = "message-oui";
-      msg.innerText = "💖 Ouiii ! Je t’aime Bella 💖";
+      msg.innerText = "💖 Mon cœur est à toi, Bella, prends-en bien soin, comble-le d'amour et de joie ❤️";
       document.body.appendChild(msg);
 
-      setTimeout(() => msg.remove(), 4000);
+      setTimeout(() => msg.remove(), 120000);
     }
 
     // Réponse Non
@@ -245,24 +248,23 @@
       document.body.classList.remove("oui");
       document.body.classList.add("non");
 
-      // Coeurs brisés qui tombent
       for (let i = 0; i < 30; i++) {
         const coeur = document.createElement("div");
         coeur.className = "coeur-brise";
         coeur.innerText = "💔";
         coeur.style.left = Math.random() * window.innerWidth + "px";
+        coeur.style.animationDuration = "120s"; // animation 2 minutes
         document.body.appendChild(coeur);
 
-        setTimeout(() => coeur.remove(), 4000);
+        setTimeout(() => coeur.remove(), 120000);
       }
 
-      // Message central
       const msg = document.createElement("div");
       msg.className = "message-non";
-      msg.innerText = "💔 Oh non… tu m’as brisé le cœur 💔";
+      msg.innerText = "💔 Ton amour est beau même s'il n'est pas réciproque 💔";
       document.body.appendChild(msg);
 
-      setTimeout(() => msg.remove(), 4000);
+      setTimeout(() => msg.remove(), 120000);
     }
   </script>
 </body>
